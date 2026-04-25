@@ -1,0 +1,31 @@
+# Private — never push to GitHub
+personal/
+repos/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*~
+
+# Python (in case any scripts get added)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+
+# Session state (Copilot, Claude, etc.)
+.copilot/
+.claude/
