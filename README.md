@@ -4,7 +4,11 @@
 
 This portfolio is a structured journey from data engineering into AI/ML platform engineering. Each repo demonstrates one architecture pattern, one tech stack, and a hands-on evaluation methodology (build → measure → improve → prove with data).
 
+☁️ **Multi-cloud by design.** Every project ships with three deployment targets — **AWS** (Bedrock, OpenSearch, DynamoDB, ECS/Lambda), **Azure** (OpenAI, Cosmos DB, AI Search, Container Apps), and **local** (Docker Compose with open-source equivalents like ChromaDB, Neo4j, Postgres). The same code runs on all three; only the infra layer changes.
+
 📄 For a recruiter-focused summary, see **[`docs/architecture-overview.md`](./docs/architecture-overview.md)** — one page covering all six projects, the learning arc, and how they fit together.
+
+> 🖼️ **Architecture diagram coming soon** — a visual map of how the six projects compose into one platform across AWS, Azure, and local.
 
 ---
 
