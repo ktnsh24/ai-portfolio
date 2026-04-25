@@ -16,7 +16,7 @@
 
 1. **[Portfolio overview (PDF)](../ai-portfolio-overview.pdf)** — one page, recruiter-friendly summary.
 2. **[Main README](../README.md)** — the five projects table.
-3. Open **[rag-chatbot](https://github.com/ketan-odido/rag-chatbot)** and read its top-level `README.md`.
+3. Open **[rag-chatbot](https://github.com/ktnsh24/rag-chatbot)** and read its top-level `README.md`.
 
 ---
 
@@ -41,7 +41,7 @@ Everything above, plus:
 8. Skim one **hands-on lab** to see how I measure changes — e.g. `docs/hands-on-labs/lab-01-chunk-size.md`.
 9. Run it locally:
    ```
-   git clone https://github.com/ketan-odido/rag-chatbot
+   git clone https://github.com/ktnsh24/rag-chatbot
    cd rag-chatbot
    cp .env.example .env
    docker compose up -d

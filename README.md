@@ -12,12 +12,12 @@ This portfolio is a structured journey from data engineering into AI/ML platform
 
 | # | Repo | Pattern | Stack | Status |
 |---|------|---------|-------|--------|
-| 1 | **[rag-chatbot](https://github.com/ketan-odido/rag-chatbot)** | Monolith RAG API | FastAPI · AWS Bedrock · Azure OpenAI · OpenSearch · ChromaDB | ✅ Core complete · 43 docs · 16 hands-on labs |
-| 2 | **[ai-gateway](https://github.com/ketan-odido/ai-gateway)** | LLM Proxy / Gateway | LiteLLM · Redis · PostgreSQL | 🚧 In progress · 27 docs · 8 config-tuning labs |
-| 3 | **[ai-agent](https://github.com/ketan-odido/ai-agent)** | AI Agent with Tools | LangGraph · MCP Client · Tavily | 📋 Planned · 8 labs scaffolded |
-| 4 | **[mcp-server](https://github.com/ketan-odido/mcp-server)** | MCP Protocol Server | TypeScript · MCP SDK · Zod | 📋 Planned · 6 labs scaffolded |
-| 5 | **[ai-multi-agent](https://github.com/ketan-odido/ai-multi-agent)** | Multi-Agent + Frontend (capstone) | CrewAI · Next.js · WebSockets | 📋 Planned · 14 labs scaffolded |
-| ★ | **[knowledge-engine](https://github.com/ketan-odido/knowledge-engine)** | Document RAG / Knowledge Base (bonus) | FastAPI · Neo4j · DynamoDB · Cosmos | 🚧 In progress · 31 docs · 19 labs scaffolded |
+| 1 | **[rag-chatbot](https://github.com/ktnsh24/rag-chatbot)** | Monolith RAG API | FastAPI · AWS Bedrock · Azure OpenAI · OpenSearch · ChromaDB | ✅ Core complete · 43 docs · 16 hands-on labs |
+| 2 | **[ai-gateway](https://github.com/ktnsh24/ai-gateway)** | LLM Proxy / Gateway | LiteLLM · Redis · PostgreSQL | 🚧 In progress · 27 docs · 8 config-tuning labs |
+| 3 | **[ai-agent](https://github.com/ktnsh24/ai-agent)** | AI Agent with Tools | LangGraph · MCP Client · Tavily | 📋 Planned · 8 labs scaffolded |
+| 4 | **[mcp-server](https://github.com/ktnsh24/mcp-server)** | MCP Protocol Server | TypeScript · MCP SDK · Zod | 📋 Planned · 6 labs scaffolded |
+| 5 | **[ai-multi-agent](https://github.com/ktnsh24/ai-multi-agent)** | Multi-Agent + Frontend (capstone) | CrewAI · Next.js · WebSockets | 📋 Planned · 14 labs scaffolded |
+| ★ | **[knowledge-engine](https://github.com/ktnsh24/knowledge-engine)** | Document RAG / Knowledge Base (bonus) | FastAPI · Neo4j · DynamoDB · Cosmos | 🚧 In progress · 31 docs · 19 labs scaffolded |
 
 > Links above will go live as each repo is published. Start with **rag-chatbot** — it is the most complete and demonstrates the full RAG pipeline end to end.
 
@@ -27,7 +27,7 @@ This portfolio is a structured journey from data engineering into AI/ML platform
 
 If you have **5 minutes**:
 1. Read the [PDF overview](./ai-portfolio-overview.pdf).
-2. Open [rag-chatbot](https://github.com/ketan-odido/rag-chatbot) → `README.md` → architecture diagram.
+2. Open [rag-chatbot](https://github.com/ktnsh24/rag-chatbot) → `README.md` → architecture diagram.
 
 If you have **15 minutes**:
 1. Steps above, plus
@@ -58,9 +58,9 @@ Every doc table includes a 🫏 **Donkey** column — a one-line everyday analog
 
 ## About me
 
-I am a **Data Engineer at Odido (Netherlands telecom)** moving into **AI/ML platform engineering**. My background is ETL, data pipelines, AWS, Terraform, and Python. This portfolio is how I am proving the transition with code, not slides.
+I am a **Data Engineer** moving into **AI/ML platform engineering**. My background is ETL, data pipelines, AWS, Terraform, and Python. This portfolio is how I am proving the transition with code, not slides.
 
-- **GitHub:** [ketan-odido](https://github.com/ketan-odido)
+- **GitHub:** [ktnsh24](https://github.com/ktnsh24)
 - **Cert targets:** AWS Generative AI Developer Pro (AIP-C01), Azure AI Engineer (AI-102)
 - **Approach:** map every AI concept to a DE parallel, build production-grade APIs, measure everything with golden datasets
 
