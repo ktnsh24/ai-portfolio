@@ -14,8 +14,8 @@
 
 ## If you have 5 minutes
 
-1. **[Portfolio overview (PDF)](../ai-portfolio-overview.pdf)** — one page, recruiter-friendly summary.
-2. **[Main README](../README.md)** — the five projects table.
+1. **[Architecture overview](./architecture-overview.md)** — one page, recruiter-friendly summary of all six projects.
+2. **[Main README](../README.md)** — the projects table.
 3. Open **[rag-chatbot](https://github.com/ktnsh24/rag-chatbot)** and read its top-level `README.md`.
 
 ---

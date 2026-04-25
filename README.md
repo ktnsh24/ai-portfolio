@@ -4,7 +4,7 @@
 
 This portfolio is a structured journey from data engineering into AI/ML platform engineering. Each repo demonstrates one architecture pattern, one tech stack, and a hands-on evaluation methodology (build → measure → improve → prove with data).
 
-📄 **[Download the portfolio overview (PDF)](./ai-portfolio-overview.pdf)** for a 1-page recruiter summary.
+📄 For a recruiter-focused summary, see **[`docs/architecture-overview.md`](./docs/architecture-overview.md)** — one page covering all six projects, the learning arc, and how they fit together.
 
 ---
 
@@ -26,7 +26,7 @@ This portfolio is a structured journey from data engineering into AI/ML platform
 ## What recruiters should look at
 
 If you have **5 minutes**:
-1. Read the [PDF overview](./ai-portfolio-overview.pdf).
+1. Read [`docs/architecture-overview.md`](./docs/architecture-overview.md) — the 1-page summary of all six projects.
 2. Open [rag-chatbot](https://github.com/ktnsh24/rag-chatbot) → `README.md` → architecture diagram.
 
 If you have **15 minutes**:
