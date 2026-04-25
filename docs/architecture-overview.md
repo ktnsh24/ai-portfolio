@@ -1,6 +1,6 @@
 # Architecture Overview
 
-> How the five projects in this portfolio fit together as one learning arc.
+> How the six projects in this portfolio fit together as one learning arc.
 
 ## Table of Contents
 
@@ -26,7 +26,13 @@ Each project introduces **one new architectural pattern** while reusing the conv
  └──────────┘      └──────────┘      └──────────┘      └──────────┘      └─────────────┘
    one LLM,         many LLMs,         tools +           protocol-          orchestration
    one API          one API            reasoning         standard            + frontend
-                                                         tool host
+       │                                                 tool host
+       │
+       ▼
+ ┌──────────────┐
+ │  Knowledge   │   bonus track — advanced RAG variant
+ │   Engine     │   (GraphRAG, multi-store, gap detection)
+ └──────────────┘
 ```
 
 - **Phase 1 (rag-chatbot)** — the foundation. One model, one vector store, one API. Production-grade docs and labs.
@@ -34,8 +40,7 @@ Each project introduces **one new architectural pattern** while reusing the conv
 - **Phase 3 (ai-agent)** — give the LLM tools. LangGraph for reasoning, MCP client to talk to external tool servers.
 - **Phase 4 (mcp-server)** — be a tool server yourself. TypeScript implementation of the Model Context Protocol.
 - **Phase 5 (ai-multi-agent)** — capstone. Multiple specialized agents collaborate, with a Next.js frontend and WebSockets for live updates.
-
-The bonus **knowledge-engine** repo sits alongside Phase 1 as a more advanced RAG variant (GraphRAG, multi-store, gap detection).
+- **Bonus (knowledge-engine)** — sits alongside Phase 1 as a more advanced RAG variant. Swaps the single vector store for a graph + multi-store (Neo4j + DynamoDB + Cosmos), and adds a knowledge-gap detector. Read this after Phase 1 if you want to see *how far* a RAG system can be pushed before you reach for an agent.
 
 ---
 
@@ -48,6 +53,7 @@ The bonus **knowledge-engine** repo sits alongside Phase 1 as a more advanced RA
 | 3 | ai-agent | Tool use, planning, agent loops, memory | LangGraph state machine, MCP client integration |
 | 4 | mcp-server | Protocol implementation, schema validation | TypeScript, Zod schemas, MCP SDK, deployable as a stdio or HTTP server |
 | 5 | ai-multi-agent | Multi-agent orchestration, role specialization, real-time UI | CrewAI for orchestration, Next.js frontend, WebSocket updates |
+| ★ | knowledge-engine *(bonus, alongside Phase 1)* | GraphRAG, multi-store retrieval, knowledge-gap detection | Neo4j (graph) + DynamoDB + Cosmos, FastAPI, 19 labs scaffolded |
 
 ---
 
