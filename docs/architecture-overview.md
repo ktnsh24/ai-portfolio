@@ -67,7 +67,7 @@ Every repo follows the same patterns so that once you understand one, you can na
 | `docs/ai-engineering/` for AI concepts | Mapped to data-engineering parallels (embeddings = index, chunking = partitioning, …) |
 | `docs/architecture-and-design/` | System design + per-route deep dives |
 | `docs/hands-on-labs/` | Every config knob has a measurable lab — change one variable, run the same questions, record the metrics |
-| `🫏 Donkey` column on every table | A one-line everyday analogy for every concept — readable without prior AI knowledge |
+| `🚚 Courier` column on every table | A one-line everyday analogy for every concept — readable without prior AI knowledge |
 | Pydantic Settings for all config | One `.env` file per environment, fully type-checked |
 | Ruff for lint + format | Single tool, no debate |
 | Docker + Terraform | Local-first development, cloud-deployable from day one |

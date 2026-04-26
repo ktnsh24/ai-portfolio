@@ -73,4 +73,4 @@ Every repo in this portfolio follows the same structure, so once you have explor
 | `docs/reference/` | API reference, Pydantic models, monitoring |
 | `docs/hands-on-labs/` | Measurable experiments with before/after metrics |
 
-Every doc table includes a 🫏 **Donkey** column — a one-line everyday analogy. The convention is intentional: it forces every technical concept to also be explainable in plain English, which is the single best test for whether I actually understand it.
+Every doc table includes a 🚚 **Courier** column — a one-line everyday analogy. The convention is intentional: it forces every technical concept to also be explainable in plain English, which is the single best test for whether I actually understand it.

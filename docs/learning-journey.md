@@ -64,7 +64,7 @@ The workflow is the same in every repo:
 1. **Plan first.** Write Jira-style stories (Analysis A1/A2/… → Development D1/D2/…) before any code.
 2. **Build the smallest end-to-end slice.** API + one provider + one happy path. Get it running locally.
 3. **Add observability before features.** OpenTelemetry, structured logs, request IDs — never debug blind.
-4. **Document as I build.** Every concept gets a doc with a DE parallel and a 🫏 donkey one-liner.
+4. **Document as I build.** Every concept gets a doc with a DE parallel and a 🚚 courier one-liner.
 5. **Run hands-on labs.** Change one config (chunk size, top-k, temperature, …), re-run the same golden questions, record metrics in a table. Conclusions backed by numbers, not vibes.
 6. **Containerize and Terraform from day one.** Local-first development that maps cleanly to AWS or Azure deployment.
 7. **Push to GitHub only when the README and `docs/reading-order.md` are publish-ready.**

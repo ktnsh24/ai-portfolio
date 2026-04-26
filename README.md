@@ -56,7 +56,7 @@ Every repo follows the same documentation and quality conventions:
 - **`docs/reference/`** — API reference, Pydantic models, monitoring.
 - **`docs/hands-on-labs/`** — measurable experiments (chunk size, top-k, temperature, …) with before/after metrics.
 
-Every doc table includes a 🫏 **Donkey** column — a one-line everyday analogy that makes complex AI concepts immediately readable.
+Every doc table includes a 🚚 **Courier** column — a one-line everyday analogy that makes complex AI concepts immediately readable.
 
 ---
 
