@@ -18,10 +18,10 @@ This portfolio is a structured journey from data engineering into AI/ML platform
 |---|------|---------|-------|--------|
 | 1 | **[rag-chatbot](https://github.com/ktnsh24/rag-chatbot)** | Monolith RAG API | FastAPI · AWS Bedrock · Azure OpenAI · OpenSearch · ChromaDB | ✅ Core complete · 43 docs · 16 hands-on labs |
 | 2 | **[ai-gateway](https://github.com/ktnsh24/ai-gateway)** | LLM Proxy / Gateway | LiteLLM · Redis · PostgreSQL | 🚧 In progress · 27 docs · 8 config-tuning labs |
-| 3 | **[ai-agent](https://github.com/ktnsh24/ai-agent)** | AI Agent with Tools | LangGraph · MCP Client · Tavily | 📋 Planned · 8 labs scaffolded |
-| 4 | **[mcp-server](https://github.com/ktnsh24/mcp-server)** | MCP Protocol Server | TypeScript · MCP SDK · Zod | 📋 Planned · 6 labs scaffolded |
-| 5 | **[ai-multi-agent](https://github.com/ktnsh24/ai-multi-agent)** | Multi-Agent + Frontend (capstone) | CrewAI · Next.js · WebSockets | 📋 Planned · 14 labs scaffolded |
-| ★ | **[knowledge-engine](https://github.com/ktnsh24/knowledge-engine)** | Document RAG / Knowledge Base (bonus) | FastAPI · Neo4j · DynamoDB · Cosmos | 🚧 In progress · 31 docs · 19 labs scaffolded |
+| 3 | **ai-agent** | AI Agent with Tools | LangGraph · MCP Client · Tavily | 📋 Planned · 8 labs scaffolded |
+| 4 | **mcp-server** | MCP Protocol Server | TypeScript · MCP SDK · Zod | 📋 Planned · 6 labs scaffolded |
+| 5 | **ai-multi-agent** | Multi-Agent + Frontend (capstone) | CrewAI · Next.js · WebSockets | 📋 Planned · 14 labs scaffolded |
+| ★ | **knowledge-engine** | Document RAG / Knowledge Base (bonus) | FastAPI · Neo4j · DynamoDB · Cosmos | 🚧 In progress · 31 docs · 19 labs scaffolded |
 
 > Links above will go live as each repo is published. Start with **rag-chatbot** — it is the most complete and demonstrates the full RAG pipeline end to end.
 
