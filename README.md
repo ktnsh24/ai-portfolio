@@ -56,6 +56,15 @@ Every repo follows the same documentation and quality conventions:
 - **`docs/reference/`** — API reference, Pydantic models, monitoring.
 - **`docs/hands-on-labs/`** — measurable experiments (chunk size, top-k, temperature, …) with before/after metrics.
 
+Cross-repo generic lab guidance is centralized in:
+
+- **[`docs/shared/hands-on-labs/how-to-read-labs.md`](./docs/shared/hands-on-labs/how-to-read-labs.md)** — shared lab reading model, mode policy, and comparison conventions used across all repos.
+
+Cross-repo generic AI-engineering guidance is centralized in:
+
+- **[`docs/shared/ai-engineering/testing-playbook.md`](./docs/shared/ai-engineering/testing-playbook.md)** — shared testing baseline and reporting template.
+- **[`docs/shared/ai-engineering/cost-analysis-playbook.md`](./docs/shared/ai-engineering/cost-analysis-playbook.md)** — shared cost-analysis structure and budget guard baseline.
+
 Every doc table includes a 🚚 **Courier** column — a one-line everyday analogy that makes complex AI concepts immediately readable.
 
 ---
