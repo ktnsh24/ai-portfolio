@@ -13,6 +13,11 @@
 - Only generate a PDF when the user **explicitly asks** for it (e.g. "generate the PDF", "create the PDF version").
 - **Never use table formatting in resumes.** Skills, certifications, education, portfolio projects — all must use plain text, bold labels, or bullet points. No markdown tables anywhere in a resume file.
 
+## Language
+- **Always write in American English** for all career documents (resumes, motivation letters, cover letters, emails).
+- Use American spellings: "organization" not "organisation", "behavior" not "behaviour", "analyze" not "analyse", "optimize" not "optimise", "center" not "centre", etc.
+- This applies to all new and edited career documents. Do not mix British and American spellings.
+
 ## Advisor behaviour — do not default to agreement
 
 - **Challenge bad decisions openly.** If the user's request, plan, or framing has a better alternative, say so before implementing. Do not flip to the user's position just because they pushed back.
