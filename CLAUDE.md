@@ -1,7 +1,7 @@
 # CLAUDE.md — AI Portfolio Session Audit Log
 
 > Append-only. Each session is a new entry at the bottom.
-> Last updated: 2026-05-11
+> Last updated: 2026-05-13
 
 ---
 
@@ -391,3 +391,59 @@ Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
 7. **I8** — Athena DDL for `process_interactor_source` (needs infra team access), Sentry alert, latency comparison
 8. **I9** — Remove `process_event` sidecar (7-day gate after I8 confirmed clean)
 
+
+---
+
+## Session — 2026-05-13 — Prod Incident: datetime bug fix + hotfix deployed
+
+### What was done
+
+- **Prod incident triggered** — PR #85 (flag flip to `true`) merged at ~12:50 UTC → `Deploy All Envs` auto-triggered → `USE_PROCESS_INTERACTOR=true` deployed to prod. First real prod traffic at 12:57 UTC hit the PI path and crashed.
+- **3 Sentry alerts fired (SHARED-PROXY-8P, 8N, 8M):**
+  - 8P: `TypeError: can't subtract offset-naive and offset-aware datetimes` in `base.py:calculate_latest_online_weights` — DynamoDB returns timezone-naive `creation_timestamp`; code subtracts from `datetime.now(timezone.utc)` which is aware
+  - 8N: `ProcessInteractorError` in `adapters.py:to_bna_response` — caused by 8P cascade
+  - 8M: `get_bna process_interactor fallback triggered` — fallback fired correctly, customers unaffected
+  - 8Q: `RemoteProtocolError: Server disconnected` in `base.py:_send_req` — separate connection issue, already caught by `httpx.RequestError`
+- **Hotfix PR #86 created and merged** — `hotfix/disable-pi-flag-prod` branch: flag back to `"false"` + urllib3 2.6.3→2.7.0 (2 high CVEs). Prod deploy blocked for hours by flaky `Integration Test Dev` ("Cannot find matching workflow run!" race condition).
+- **Root cause identified** — Dev test customer `gWtqTM2LWgzJ8mJrPI4mXMOiDD9jzUFL4t+ahqgdbek=` had NO `creation_timestamp` in `customer_state` DynamoDB → fallback to `current_time` (same tz as `now(utc)`) → no crash. Prod customers have real historical timestamps stored WITHOUT tzinfo.
+- **Fix implemented on `feature/datetime-fix`** — `base.py:calculate_latest_online_weights`: check `raw_ts.tzinfo is None` → `replace(tzinfo=timezone.utc)` before subtraction.
+- **10 new tests added to `test_base_integrator.py`:**
+  - `TestOnlineWeights` (7 new): naive timestamp doesn't raise, naive treated as UTC (decay applies), aware unchanged, missing timestamp, zero diff, multiple actions, missing action defaults 1.0
+  - `TestSendEventProcessorConnectionErrors` (3 new): `RemoteProtocolError` retries, all retries exhausted raises, mixed errors then success
+- **391 tests pass** (2 pre-existing env-only failures, not caused by fix)
+- **Deployed to dev** via `feature/**` auto-deploy with `USE_PROCESS_INTERACTOR=true` temporarily in Terraform — dev is running fix+flag for Postman verification
+- **Postman testing guide written** — 5 request scenarios covering predict/offer/reject + multiple channels
+
+### Decisions made
+
+- Fix normalises naive timestamps to UTC (treat as UTC — consistent with how prod data was always intended). Alternative (reject and log) was rejected — would still cause fallback on every prod customer.
+- `feature/datetime-fix` branch includes temp flag `true` for dev testing only — Terraform flag must be reverted to `false` before opening the final PR to main.
+- `RemoteProtocolError` is already a subclass of `httpx.RequestError` — no code change needed, just tests to confirm retry fires.
+- Scenario 5 (unknown customer → 400) is pre-existing behaviour, not related to the fix. Removed from test matrix.
+
+### Gotchas discovered
+
+- **`Deploy All Envs` fires on EVERY merge to `main`** — including hotfix/flag-flip PRs. There is NO way to merge to main without triggering a prod deploy. Always consider prod impact before merging.
+- **Dev test with current customer hid the bug** — customer had no stored `creation_timestamp` so code defaulted to `current_time` (timezone-aware) → no crash. Production customers have years of stored history. **Rule: when testing PI path in dev, always find a customer that has a `creation_timestamp` in `tmnl-bna-dev-customer-state` DynamoDB.**
+- **Flaky `Integration Test Dev`** — "Cannot find matching workflow run!" is a race condition in the trigger script. Pre-existing issue tracked in draft PR #72. Workaround: re-run repeatedly OR get repo admin to bypass the gate.
+- **`deploy-dev-feature.yml` only triggers on `feature/**` branches** — `fix/**` or `hotfix/**` branches do NOT trigger auto-deploy. Must rename to `feature/...` to use the shortcut.
+- **Terraform state lock** — pushing twice to same feature branch in quick succession triggers two concurrent deploy workflows → second one fails with state lock. Safe to ignore if first run succeeded.
+- **App logs NOT in CloudWatch** — go through FluentBit/Firelens → Elastic. CloudWatch `-firelens` log group only has FluentBit operational logs.
+
+### Files changed
+
+| Repo | File | What changed |
+|------|------|-------------|
+| maestro-devops-shared-proxy | `terraform/base/proxy_deployment.tf` | PR #85: `false`→`true` (caused incident); PR #86: `true`→`false` (hotfix); `feature/datetime-fix`: `false`→`true` (temp, dev-only) |
+| maestro-devops-shared-proxy | `api_proxy/poetry.lock` | urllib3 2.6.3 → 2.7.0 (GHSA-mf9v-mfxr-j63j, GHSA-qccp-gfcp-xxvc) |
+| maestro-devops-shared-proxy | `api_proxy/api_proxy/process_interactor/integrators/base.py` | Normalise timezone-naive `creation_timestamp` to UTC before subtraction |
+| maestro-devops-shared-proxy | `api_proxy/tests/process_interactor/test_base_integrator.py` | +10 tests: 7 datetime variants + 3 RemoteProtocolError retry tests |
+
+### Unfinished / Next steps
+
+1. **PRIORITY — Verify fix in dev via Postman** — 5 scenarios listed above; check Elastic for `get_bna handled by process_interactor` WITHOUT fallback line. Need API Gateway URL + API key from teammate.
+2. **After dev confirmed clean** — revert `terraform/base/proxy_deployment.tf` flag back to `"false"` on `feature/datetime-fix`, then open PR to main (code fix only, no flag).
+3. **After fix PR merged to main** — separate small PR to flip flag `true` in prod via `feature/**` branch (same pattern as PR #85 but won't hit the datetime crash this time).
+4. **Investigate flaky `Integration Test Dev`** — draft PR #72 exists; blocked deploy for hours today.
+5. **Fix the "find a prod-like customer for dev testing" gap** — after fix is deployed, scan `tmnl-bna-dev-customer-state` to identify a customer with a real `creation_timestamp` for future regression testing.
+6. **I6** — Wire `/v1/post_event` + `predict_for_channel()` to EventProcessor (same try/fallback pattern) — do NOT start until fix is confirmed in prod.
