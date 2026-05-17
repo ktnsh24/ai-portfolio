@@ -22,6 +22,9 @@ Use this guide before running labs in any repo under ai-portfolio. It defines on
 - A lab is mode-specific only when the doc explicitly declares a Mode flag.
 - Preferred default mode for comparative evaluation labs is combined.
 - Alternative modes stay documented as comments/examples, not as the default path.
+- For any generated lab result page, both lanes must appear on the same page: rule-based and LLM-as-judge.
+- A result page is incomplete if the judge lane is only available in a separate summary file.
+- Each experiment should explain why the rule-based score and the judge score are high, low, or divergent.
 
 Recommended `.env` snippet:
 
@@ -70,6 +73,12 @@ When combined mode is used, both lanes appear together in one panel/table for th
 | `policy_hint` | keep, review, or escalate |
 
 This keeps comparison immediate and removes context-switching between different output locations.
+
+Required reading order inside one result page:
+
+1. Read the rule-based lane to see the deterministic baseline.
+2. Read the LLM judge lane to see the semantic review.
+3. Read the disagreement explanation to understand whether the gap came from retrieval, grounding, or answer relevance.
 
 ## Repo index
 
